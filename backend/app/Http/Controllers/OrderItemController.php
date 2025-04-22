@@ -30,7 +30,7 @@ class OrderItemController extends Controller
     {
         // Code to store a new order item
         $request->validate([
-            'order_id' => 'nullable|integer|exists:orders,id', // change it to 'required' later
+            'order_id' => 'required|nullable|integer|exists:orders,id',
             'menu_id' => 'required|integer|exists:menus,id',
             'quantity' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
