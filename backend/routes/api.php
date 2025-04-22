@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderItemController;
 
@@ -34,3 +35,12 @@ Route::group(['prefix' => 'order-items'], function () {
     Route::put('update/{id}', [OrderItemController::class, 'update']);
     Route::delete('delete/{id}', [OrderItemController::class, 'destroy']);
 });
+
+Route::group(['prefix'=> 'order'], function () {
+    Route::get('/', [OrderController::class, 'index']);
+    Route::post('create', [OrderController::class, 'store']);
+    Route::get('/{id}', [OrderController::class, 'show']);
+    Route::put('update/{id}', [OrderController::class, 'update']);
+    Route::delete('delete/{id}', [OrderController::class, 'destroy']);
+});
+
