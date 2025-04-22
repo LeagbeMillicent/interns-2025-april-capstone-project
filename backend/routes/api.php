@@ -30,17 +30,17 @@ Route::group(['prefix' => 'categories'], function () {
 
 Route::group(['prefix' => 'order-items'], function () {
     Route::get('/', [OrderItemController::class, 'index']);
-    Route::post('create', [OrderItemController::class, 'store']);
+    Route::post('/create', [OrderItemController::class, 'store']);
     Route::get('/{id}', [OrderItemController::class, 'show']);
-    Route::put('update/{id}', [OrderItemController::class, 'update']);
-    Route::delete('delete/{id}', [OrderItemController::class, 'destroy']);
+    Route::put('/update/{id}', [OrderItemController::class, 'update']);
+    Route::delete('/delete/{id}', [OrderItemController::class, 'destroy']);
 });
 
 Route::group(['prefix'=> 'order'], function () {
     Route::get('/', [OrderController::class, 'index']);
-    Route::post('create', [OrderController::class, 'store']);
+    Route::post('/create', [OrderController::class, 'store']);
     Route::get('/{id}', [OrderController::class, 'show']);
-    Route::put('update/{id}', [OrderController::class, 'update']);
-    Route::delete('delete/{id}', [OrderController::class, 'destroy']);
+    Route::put('/update/{id}', [OrderController::class, 'update']);
+    Route::delete('/delete/{id}', [OrderController::class, 'destroy']);
 });
 
