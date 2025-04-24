@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
- public function index()
+    public function index()
     {
         $order = Order::orderBy("created_at", "desc")->get();
         return response()->json($order);
@@ -15,10 +15,10 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $request ->validate([
-            "order_date"=> "nullable",
-            "customer_name"=> "required",
-            "total_amount"=> "required",
+        $request->validate([
+            "order_date" => "nullable",
+            "customer_name" => "required",
+            "total_amount" => "required",
         ]);
 
         $order = Order::create($request->all());
@@ -34,7 +34,7 @@ class OrderController extends Controller
         $order = Order::find($id);
 
         if (!$order) {
-            return response()->json(['message' =>'Order Not Found'], status:404);
+            return response()->json(['message' => 'Order Not Found'], status: 404);
         }
         return response()->json($order);
     }
@@ -43,16 +43,16 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         if (!$order) {
-            return response()->json(['message'=> 'Order Not Found'], status:404);
+            return response()->json(['message' => 'Order Not Found'], status: 404);
         }
 
-        $request ->validate([
-            'order_date'=> 'required',
-            'customer_name'=> 'required',
-            'total_amount'=> 'required',
+        $request->validate([
+            'order_date' => 'required',
+            'customer_name' => 'required',
+            'total_amount' => 'required',
         ]);
 
-        $order -> update($request->all());
+        $order->update($request->all());
         return response()->json($order);
     }
 
@@ -60,10 +60,10 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         if (!$order) {
-            return response()->json(['message'=> 'Order Not Found'], status:404);
+            return response()->json(['message' => 'Order Not Found'], status: 404);
         }
 
-        $order -> delete();
+        $order->delete();
         return response()->json($order);
     }
 }
